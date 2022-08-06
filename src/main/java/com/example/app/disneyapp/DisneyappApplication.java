@@ -9,5 +9,4 @@ public class DisneyappApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DisneyappApplication.class, args);
 	}
-
 }
