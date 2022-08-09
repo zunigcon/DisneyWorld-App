@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,13 +25,19 @@ public class Genero {
 	@Column
 	private String imagen;
 	
-	@OneToMany(mappedBy="genero")
+	@OneToMany(mappedBy="genero", fetch=FetchType.LAZY)
 	private List<Pelicula> peliculas;
 	
 	public Genero() {
 		super();
 	}
 	
+	public Genero(String nombre, String imagen) {
+		super();
+		this.nombre = nombre;
+		this.imagen = imagen;
+	}
+
 	public Genero(String nombre, String imagen, List<Pelicula> peliculas) {
 		super();
 		this.nombre = nombre;

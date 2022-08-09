@@ -2,7 +2,6 @@ package com.example.app.disneyapp.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,11 +34,20 @@ public class Personaje {
 	@Column
 	private String imagen;
 	
-	@ManyToMany(mappedBy="personajes", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="personajes", fetch=FetchType.LAZY)
 	private List<Pelicula> peliculas;
 
 	public Personaje() {
 		super();
+	}
+	
+	public Personaje(String nombre, int edad, double peso, String historia, String imagen) {
+		super();
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.historia = historia;
+		this.imagen = imagen;
 	}
 
 	public Personaje(String nombre, int edad, double peso, String historia, String imagen, List<Pelicula> peliculas) {

@@ -3,7 +3,6 @@ package com.example.app.disneyapp.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,7 +39,7 @@ public class Pelicula {
 	@JoinColumn(name="id_genero")
 	private Genero genero; 
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name="personaje_pelicula",
 			joinColumns = @JoinColumn(name="id_pelicula"),
