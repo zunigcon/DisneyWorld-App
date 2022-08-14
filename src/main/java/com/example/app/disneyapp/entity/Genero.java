@@ -1,14 +1,10 @@
 package com.example.app.disneyapp.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,24 +21,14 @@ public class Genero {
 	@Column
 	private String imagen;
 	
-	@OneToMany(mappedBy="genero", fetch=FetchType.LAZY)
-	private List<Pelicula> peliculas;
-	
 	public Genero() {
 		super();
 	}
-	
+
 	public Genero(String nombre, String imagen) {
 		super();
 		this.nombre = nombre;
 		this.imagen = imagen;
-	}
-
-	public Genero(String nombre, String imagen, List<Pelicula> peliculas) {
-		super();
-		this.nombre = nombre;
-		this.imagen = imagen;
-		this.peliculas = peliculas;
 	}
 
 	public Long getId_genero() {
@@ -67,14 +53,6 @@ public class Genero {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
-	}
-
-	public List<Pelicula> getPeliculas() {
-		return peliculas;
-	}
-
-	public void setPeliculas(List<Pelicula> peliculas) {
-		this.peliculas = peliculas;
 	}
 
 }

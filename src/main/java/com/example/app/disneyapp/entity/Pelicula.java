@@ -1,7 +1,8 @@
 package com.example.app.disneyapp.entity;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="pelicula")
@@ -35,24 +39,26 @@ public class Pelicula {
 	@Column
 	private String imagen;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_genero")
-	private Genero genero; 
+	@JsonIgnore
+	private Genero genero; 	
 	
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(
 			name="personaje_pelicula",
 			joinColumns = @JoinColumn(name="id_pelicula"),
 			inverseJoinColumns = @JoinColumn(name="id_personaje")
 	)
-	private List<Personaje> personajes;
+	@JsonIgnore
+	private Set<Personaje> personajes = new HashSet<>();
 
 	public Pelicula() {
 		super();
 	}
 
 	public Pelicula(String titulo, LocalDate fecha_creacion, int calificacion, String imagen, Genero genero,
-			List<Personaje> personajes) {
+			Set<Personaje> personajes) {
 		super();
 		this.titulo = titulo;
 		this.fecha_creacion = fecha_creacion;
@@ -110,11 +116,11 @@ public class Pelicula {
 		this.genero = genero;
 	}
 
-	public List<Personaje> getPersonajes() {
+	public Set<Personaje> getPersonajes() {
 		return personajes;
 	}
 
-	public void setPersonajes(List<Personaje> personajes) {
+	public void setPersonajes(Set<Personaje> personajes) {
 		this.personajes = personajes;
 	}
 

@@ -21,23 +21,23 @@ import com.example.app.disneyapp.service.PersonajeService;
 public class PersonajeController {
 	
 	@Autowired
-	private PersonajeService continenteService;
+	private PersonajeService personajeService;
 	
-	@GetMapping
+	@GetMapping("/list")
 	public ResponseEntity<List<PersonajeDTO>> getAll() {
-		List<PersonajeDTO> listaPersonajes = continenteService.getAll();
+		List<PersonajeDTO> listaPersonajes = personajeService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(listaPersonajes);
 	}
 	
-	@PostMapping
+	@PostMapping("/create")
 	public ResponseEntity<PersonajeDTO> save(@RequestBody PersonajeDTO personaje) {
-		PersonajeDTO personajeGuardado = continenteService.save(personaje);
+		PersonajeDTO personajeGuardado = personajeService.save(personaje);
 		return ResponseEntity.status(HttpStatus.CREATED).body(personajeGuardado);
 	}	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
-		continenteService.delete(id);
+		personajeService.delete(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 }

@@ -1,15 +1,16 @@
 package com.example.app.disneyapp.entity;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="personaje")
@@ -34,8 +35,9 @@ public class Personaje {
 	@Column
 	private String imagen;
 	
-	@ManyToMany(mappedBy="personajes", fetch=FetchType.LAZY)
-	private List<Pelicula> peliculas;
+	@ManyToMany(mappedBy="personajes")
+	@JsonIgnore
+	private Set<Pelicula> peliculas;
 
 	public Personaje() {
 		super();
@@ -50,7 +52,7 @@ public class Personaje {
 		this.imagen = imagen;
 	}
 
-	public Personaje(String nombre, int edad, double peso, String historia, String imagen, List<Pelicula> peliculas) {
+	public Personaje(String nombre, int edad, double peso, String historia, String imagen, Set<Pelicula> peliculas) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -108,12 +110,12 @@ public class Personaje {
 		this.imagen = imagen;
 	}
 
-	public List<Pelicula> getPeliculas() {
+	public Set<Pelicula> getPeliculas() {
 		return peliculas;
 	}
 
-	public void setPeliculas(List<Pelicula> peliculas) {
+	public void setPeliculas(Set<Pelicula> peliculas) {
 		this.peliculas = peliculas;
 	}
-
+	
 }
