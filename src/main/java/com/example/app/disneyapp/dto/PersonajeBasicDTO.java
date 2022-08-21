@@ -1,10 +1,6 @@
 package com.example.app.disneyapp.dto;
 
-import java.util.List;
-
-public class PersonajeDTO {
-	
-	private Long id_personaje;
+public class PersonajeBasicDTO {
 	
 	private String nombre;
 	
@@ -15,25 +11,14 @@ public class PersonajeDTO {
 	private String historia;
 	
 	private String imagen;
-	
-	private List<PeliculaDTO> peliculas;
 
-	public PersonajeDTO(Long id_personaje, String nombre, int edad, double peso, String historia, String imagen) {
+	public PersonajeBasicDTO(String nombre, int edad, double peso, String historia, String imagen) {
 		super();
-		this.id_personaje = id_personaje;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.peso = peso;
 		this.historia = historia;
 		this.imagen = imagen;
-	}
-
-	public Long getId_personaje() {
-		return id_personaje;
-	}
-
-	public void setId_personaje(Long id_personaje) {
-		this.id_personaje = id_personaje;
 	}
 
 	public String getNombre() {
@@ -74,14 +59,6 @@ public class PersonajeDTO {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
-	}
-
-	public List<PeliculaDTO> getPeliculas() {
-		return peliculas;
-	}
-
-	public void setPeliculas(List<PeliculaDTO> peliculas) {
-		this.peliculas = peliculas;
 	}
 	
 }

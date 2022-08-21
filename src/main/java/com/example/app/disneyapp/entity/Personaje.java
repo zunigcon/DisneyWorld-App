@@ -1,12 +1,15 @@
 package com.example.app.disneyapp.entity;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -35,9 +38,14 @@ public class Personaje {
 	@Column
 	private String imagen;
 	
-	@ManyToMany(mappedBy="personajes")
+	@ManyToMany
+	@JoinTable(
+			name="personaje_pelicula",
+			joinColumns = @JoinColumn(name="id_personaje"),
+			inverseJoinColumns = @JoinColumn(name="id_pelicula")
+	)
 	@JsonIgnore
-	private Set<Pelicula> peliculas;
+	private List<Pelicula> peliculas = new ArrayList<>();
 
 	public Personaje() {
 		super();
@@ -52,7 +60,7 @@ public class Personaje {
 		this.imagen = imagen;
 	}
 
-	public Personaje(String nombre, int edad, double peso, String historia, String imagen, Set<Pelicula> peliculas) {
+	public Personaje(String nombre, int edad, double peso, String historia, String imagen, List<Pelicula> peliculas) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -110,11 +118,11 @@ public class Personaje {
 		this.imagen = imagen;
 	}
 
-	public Set<Pelicula> getPeliculas() {
+	public List<Pelicula> getPeliculas() {
 		return peliculas;
 	}
 
-	public void setPeliculas(Set<Pelicula> peliculas) {
+	public void setPeliculas(List<Pelicula> peliculas) {
 		this.peliculas = peliculas;
 	}
 	

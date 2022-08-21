@@ -1,13 +1,8 @@
 package com.example.app.disneyapp.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import com.example.app.disneyapp.entity.Genero;
-
-public class PeliculaDTO {
-	
-	private Long id_pelicula;
+public class PeliculaBasicDTO {
 	
 	private String titulo;
 	
@@ -16,32 +11,13 @@ public class PeliculaDTO {
 	private int calificacion;
 	
 	private String imagen;
-	
-	private Genero genero;
-	
-	private List<PersonajeDTO> personajes;
 
-	public PeliculaDTO() {
+	public PeliculaBasicDTO(String titulo, LocalDate fecha_creacion, int calificacion, String imagen) {
 		super();
-	}
-
-	public PeliculaDTO(Long id_pelicula, String titulo, LocalDate fecha_creacion, int calificacion, String imagen,
-			Genero genero) {
-		super();
-		this.id_pelicula = id_pelicula;
 		this.titulo = titulo;
 		this.fecha_creacion = fecha_creacion;
 		this.calificacion = calificacion;
 		this.imagen = imagen;
-		this.genero = genero;
-	}
-
-	public Long getId_pelicula() {
-		return id_pelicula;
-	}
-
-	public void setId_pelicula(Long id_pelicula) {
-		this.id_pelicula = id_pelicula;
 	}
 
 	public String getTitulo() {
@@ -75,21 +51,5 @@ public class PeliculaDTO {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-
-	public List<PersonajeDTO> getPersonajes() {
-		return personajes;
-	}
-
-	public void setPersonajes(List<PersonajeDTO> personajes) {
-		this.personajes = personajes;
-	}
-
-	public Genero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-
+	
 }

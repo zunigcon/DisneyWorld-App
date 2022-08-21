@@ -1,7 +1,7 @@
 package com.example.app.disneyapp.dto;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 public class PeliculaRequestDTO {
 	
@@ -17,14 +17,14 @@ private Long id_pelicula;
 	
 	private Long genero;
 	
-	private Set<Long> personajes;
+	private List<Long> personajes;
 
 	public PeliculaRequestDTO() {
 		super();
 	}
 
 	public PeliculaRequestDTO(Long id_pelicula, String titulo, LocalDate fecha_creacion, int calificacion, String imagen,
-			Long genero, Set<Long> personajes) {
+			Long genero, List<Long> personajes) {
 		super();
 		this.id_pelicula = id_pelicula;
 		this.titulo = titulo;
@@ -75,11 +75,11 @@ private Long id_pelicula;
 		this.imagen = imagen;
 	}
 
-	public Set<Long> getPersonajes() {
+	public List<Long> getPersonajes() {
 		return personajes;
 	}
 
-	public void setPersonajes(Set<Long> personajes) {
+	public void setPersonajes(List<Long> personajes) {
 		this.personajes = personajes;
 	}
 

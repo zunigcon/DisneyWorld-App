@@ -12,13 +12,13 @@ import com.example.app.disneyapp.dto.GeneroDTO;
 import com.example.app.disneyapp.service.GeneroService;
 
 @RestController
-@RequestMapping("genero")
+@RequestMapping("gender")
 public class GeneroController {
 	
 	@Autowired
 	private GeneroService generoService;
 	
-	@PostMapping
+	@PostMapping("/create")
 	public ResponseEntity<GeneroDTO> save(@RequestBody GeneroDTO genero){
 		GeneroDTO generoGuardado = generoService.save(genero);
 		return ResponseEntity.status(HttpStatus.CREATED).body(generoGuardado);
